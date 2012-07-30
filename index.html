@@ -56,7 +56,7 @@
     </div>
 
     <div class="container">
-        <form class="sixteen columns">
+        <form id="input" class="sixteen columns">
             <div class="form row">
                 <label class="two columns alpha" for="callsign">Callsign</label>
                 <div class="seven columns">
@@ -70,7 +70,7 @@
             <div class="form row">
                 <label class="two columns alpha" for="start">Start</label>
                 <div class="seven columns">
-                    <input type="text" id="start" class="long" class="datepicker"/>
+                    <input type="text" id="start" class="long datepicker"/>
                 </div>
                 <div class="six columns offset-by-one omega">
                     <div class="input_extra">Leave the start field blank to
@@ -81,7 +81,7 @@
             <div class="form row">
                 <label class="two columns alpha" for="end">End</label>
                 <div class="seven columns">
-                    <input type="text" id="end" class="long" class="datepicker"/>
+                    <input type="text" id="end" class="long datepicker"/>
                 </div>
                 <div class="six columns offset-by-one omega">
                     <div class="input_extra">Leave the end field blank to
@@ -106,14 +106,13 @@
         </form>
     </div>
 
-    <!-- scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
-    <script src="js/json2.min.js"></script>
-    <script src="js/jquery.base64.min.js"></script>
-    <script src="js/jquery.couch.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/json2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.base64.min.js"></script>
+    <script type="text/javascript" src="js/jquery.couch.min.js"></script>
     <script type="text/coffeescript" src="js/export_payload_telemetry.coffee"></script>
-    <script src="js/coffee-script.js"></script>
+    <script type="text/javascript" src="js/coffee-script.js"></script>
 
 </body>
 </html>
