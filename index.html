@@ -1,47 +1,118 @@
 <!DOCTYPE html>
-<title>Export Payload Telemetry</title>
 
-<!-- styles -->
-<link type="text/css" rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Droid+Serif" />
-<link type="text/css" rel="stylesheet"
-    href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" />
-<link type="text/css" rel="stylesheet"
-    href="css/export_payload_telemetry.css" />
+<!-- habitat: export payload telemetry -->
+<!-- http://habitat.habhub.org/ept -->
+<!-- (C) Copyright 2012; GNU GPL 3-->
 
-<div id="container">
-    <h1>Export Payload Telemetry</h1>
-    <div id="description-area">This is a quick web page to export the raw sentences
-        transmitted by a given payload callsign (optionally, between two date
-        ranges) in an easy to copy format. Expect something a lot better and
-        faster to come at some point in the future, but for now, enjoy this!
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <title>export payload telemetry - habitat</title>
+    <meta name="description" content=""export the raw sentences transmitted by a given payload callsign />
+    <meta name="author" content="Adam Greig"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+	<link type="text/css" rel="stylesheet" href="t/css/base.css"/>
+	<link type="text/css" rel="stylesheet" href="t/css/skeleton.css"/>
+	<link type="text/css" rel="stylesheet" href="t/css/layout.css"/>
+    <link type="text/css" rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" />
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <link rel="shortcut icon" href="t/images/favicon.ico" />
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="sixteen columns">
+                <h1 class="no-margin"><img src="t/images/header_logo.jpg" alt="habitat" title="habitat"/></h1>
+                <span id="app_name"><b>export payload telemetry</b></span>
+            </div>
+        </div>
+    </header>
+
+    <div id="grey-section">
+        <div class="container">
+            <div class="two-thirds column">
+                <h3 class="remove-bottom" id="page_title">export payload
+                    telemetry</h3>
+                <p class="remove-bottom" id="page_subtitle">
+                    This is a quick web page to export the raw sentences
+                    transmitted by a given payload callsign (optionally,
+                    between two date ranges) in an easy to copy format. Expect
+                    something a lot better and faster to come at some point in
+                    the future, but for now, enjoy this!
+                </p>
+            </div>
+        </div>
     </div>
-    <div id="input-area">
-        <form id="input">
-            <label for="callsign">Payload Callsign:</label>
-            <input id="callsign" size=10 /> 
-            <label for="start">Start:</label>
-            <input id="start" class="datepicker" size=10 /> 
-            <label for="end">End:</label>
-            <input id="end" class="datepicker" size=10 /> 
-            <input type="submit" id="submit" value="Load" />
+
+    <div class="container">
+        <form id="input" class="sixteen columns">
+            <div class="form row">
+                <label class="two columns alpha" for="callsign">Callsign</label>
+                <div class="seven columns">
+                    <input type="text" id="callsign" class="long" />
+                </div>
+                <div class="six columns offset-by-one omega">
+                    <div class="input_extra">Callsign is case sensitive.</div>
+                </div>
+            </div>
+
+            <div class="form row">
+                <label class="two columns alpha" for="start">Start</label>
+                <div class="seven columns">
+                    <input type="text" id="start" class="long datepicker"/>
+                </div>
+                <div class="six columns offset-by-one omega">
+                    <div class="input_extra">Leave the start field blank to
+                        include data from the first sentence.</div>
+                </div>
+            </div>
+
+            <div class="form row">
+                <label class="two columns alpha" for="end">End</label>
+                <div class="seven columns">
+                    <input type="text" id="end" class="long datepicker"/>
+                </div>
+                <div class="six columns offset-by-one omega">
+                    <div class="input_extra">Leave the end field blank to
+                        include data until the last sentence.</div>
+                </div>
+            </div>
+
+            <div class="form row">
+                <div class="two columns buttons offset-by-seven">
+                    <button class="full-width" type="submit" id="submit">Load</button>
+                </div>
+            </div>
+
+            <div class="form row">
+                <label class="two columns alpha" for="output">Output</label>
+                <div class="fourteen columns omega">
+                    <textarea id="output" class="long" style="width: 100%;
+                        height: 200px;"></textarea>
+                </div>
+            </div>
+
         </form>
     </div>
-    <div id="helptext">
-        Callsign is case sensitive. Leave the start and end fields blank to
-        include all data from the specified callsign.
-    </div>
-    <div id="output-area">
-        <textarea id="output"></textarea>
-    </div>
 
-</div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/json2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.base64.min.js"></script>
+    <script type="text/javascript" src="js/jquery.couch.min.js"></script>
+    <script type="text/coffeescript" src="js/export_payload_telemetry.coffee"></script>
+    <script type="text/javascript" src="js/coffee-script.js"></script>
 
-<!-- scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
-<script src="js/json2.min.js"></script>
-<script src="js/jquery.base64.min.js"></script>
-<script src="js/jquery.couch.min.js"></script>
-<script type="text/coffeescript" src="js/export_payload_telemetry.coffee"></script>
-<script src="js/coffee-script.js"></script>
+</body>
+</html>
