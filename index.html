@@ -27,6 +27,12 @@
 	<![endif]-->
 
     <link rel="shortcut icon" href="t/images/favicon.ico" />
+
+    <style>
+        .form.row{
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -58,32 +64,32 @@
     <div class="container">
         <form id="input" class="sixteen columns">
             <div class="form row">
-                <label class="two columns alpha" for="callsign">Callsign</label>
-                <div class="seven columns">
+                <label class="one column alpha" for="callsign">Callsign</label>
+                <div class="three columns">
                     <input type="text" id="callsign" class="long" />
                 </div>
-                <div class="six columns offset-by-one omega">
+                <div class="nine columns offset-by-three omega">
                     <div class="input_extra">Callsign is case sensitive.</div>
                 </div>
             </div>
 
             <div class="form row">
-                <label class="two columns alpha" for="start">Start</label>
-                <div class="seven columns">
+                <label class="one column alpha" for="start">Start</label>
+                <div class="three columns">
                     <input type="text" id="start" class="long datepicker"/>
                 </div>
-                <div class="six columns offset-by-one omega">
+                <div class="nine columns offset-by-three omega">
                     <div class="input_extra">Leave the start field blank to
                         include data from the first sentence.</div>
                 </div>
             </div>
 
             <div class="form row">
-                <label class="two columns alpha" for="end">End</label>
-                <div class="seven columns">
+                <label class="one column alpha" for="end">End</label>
+                <div class="three columns">
                     <input type="text" id="end" class="long datepicker"/>
                 </div>
-                <div class="six columns offset-by-one omega">
+                <div class="nine columns offset-by-three omega">
                     <div class="input_extra">Leave the end field blank to
                         include data until the last sentence.</div>
                 </div>
@@ -95,6 +101,8 @@
                 </div>
             </div>
 
+            <hr/>
+
             <div class="form row">
                 <label class="two columns alpha" for="output">Output</label>
                 <div class="fourteen columns omega">
@@ -102,7 +110,8 @@
                         height: 200px;"></textarea>
                 </div>
             </div>
-
+            
+            
         </form>
     </div>
 
