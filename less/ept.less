@@ -1,0 +1,70 @@
+.flight-name, .payload-name, .loading {
+    font-weight: bold;
+}
+
+.step-num {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.step-title {
+    font-size: 2em;
+}
+
+.step-part {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
+.date, .docid {
+    font-size: 0.8em;
+}
+
+.callsign {
+    font-family: monospaced;
+}
+
+.flight-row, .payload-row {
+    padding: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.flight-row:hover, .payload-row:hover {
+    background-color: #B8E6F3;
+}
+
+.selected-row {
+    color: #eeeeee;
+    background-color: #00a3d3;
+}
+
+.selected-row:hover {
+    background-color: #00a3d3;
+}
+
+.hide-without-payload {
+    // annoyingly there's no good way to have this be
+    // display:none as it is overridden by the skeleton.css;
+    // using !important stops the javascript doing the right thing...
+    // so instead set visibility and in JS reset this and set display
+    visibility: hidden;
+}
+
+.list {
+    height: 200px;
+    overflow: auto;
+}
+
+.export-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid #00a3d3;
+    cursor: pointer;
+}
+
+.export-button:hover {
+    background-color: #B8E6F3;
+}
