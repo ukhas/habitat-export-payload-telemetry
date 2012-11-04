@@ -94,6 +94,7 @@ render_select_data = ->
 
 toggle_select_all = ->
     $('.select-data-checkbox').attr 'checked', $(this).prop 'checked'
+    select_data()
 
 select_data = ->
     base_url = "/habitat/_design/ept/_list/"
@@ -115,8 +116,13 @@ select_data = ->
     querypart += "&fields=#{fields}"
     $('#export-csv').attr('href', base_url + "csv" + viewpart + querypart)
     $('#export-json').attr('href', base_url + "json" + viewpart + querypart)
+    if fields != ""
+        $('.hide-without-data').show()
+    else
+        $('.hide-without-data').hide()
 
 $('.hide-without-payload').hide().css('visibility', 'visible')
+$('.hide-without-data').hide().css('visibility', 'visible')
 $('#filter-flights').on 'keyup', show_flights
 $('#filter-payloads').on 'keyup', show_payloads
 $('#flight-list').on 'click', '.flight-row', select_flight
