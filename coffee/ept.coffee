@@ -106,7 +106,7 @@ select_data = ->
     fields = $('.select-data-checkbox:checked').map ->
         val = $(this).attr 'value'
         if val == "raw data"
-            val = "_string"
+            val = "_sentence"
         return val
     .get().join(",")
     querypart += "&fields=#{fields}"
