@@ -25,11 +25,11 @@ def json_list(head, req, rows):
         comma = True
     yield "\n]\n"
 
-@version(1)
+@version(2)
 def csv_list(head, req, rows):
     yield req['query']['fields'] + "\n"
     fields = req['query']['fields'].split(',')
     for row in rows:
         data = row['doc']['data']
-        csv_row = [str(data.get(key, '')) for key in fields]
+        csv_row = [str(data.get(key, '')).strip() for key in fields]
         yield ','.join(csv_row) + "\n"
