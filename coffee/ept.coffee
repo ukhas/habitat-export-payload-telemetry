@@ -104,7 +104,10 @@ select_data = ->
         viewpart = "/payload_telemetry/payload_time"
         querypart = "?include_docs=true&startkey=#{key}]&endkey=#{key},[]]"
     fields = $('.select-data-checkbox:checked').map ->
-        return $(this).attr 'value'
+        val = $(this).attr 'value'
+        if val == "raw data"
+            val = "_string"
+        return val
     .get().join(",")
     querypart += "&fields=#{fields}"
     $('#export-csv').attr('href', base_url + "csv" + viewpart + querypart)
