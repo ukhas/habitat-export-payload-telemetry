@@ -92,6 +92,9 @@ render_select_data = ->
     $('#select-data').html $('#data-checkbox-template').render fields
     select_data()
 
+toggle_select_all = ->
+    $('.select-data-checkbox').attr 'checked', $(this).prop 'checked'
+
 select_data = ->
     base_url = "/habitat/_design/ept/_list/"
     base_url = "/habitat/_design/ept/_list/"
@@ -119,6 +122,7 @@ $('#filter-payloads').on 'keyup', show_payloads
 $('#flight-list').on 'click', '.flight-row', select_flight
 $('#payload-list').on 'click', '.payload-row', select_payload
 $('#select-data').on 'change', '.select-data-checkbox', select_data
+$('#toggle-select-all').on 'change', toggle_select_all
 
 get_flights()
 get_payloads()
