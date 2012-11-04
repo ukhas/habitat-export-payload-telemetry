@@ -89,6 +89,7 @@ render_select_data = ->
         for field in sentence['fields']
             if field not in fields
                 fields.push {name: field['name']}
+    $('#toggle-select-all').prop 'checked', false
     $('#select-data').html $('#data-checkbox-template').render fields
     select_data()
 
