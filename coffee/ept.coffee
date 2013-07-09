@@ -84,11 +84,12 @@ render_select_data = ->
     else
         intro += " (across all flights):"
     $('#select-data-intro').html intro
-    fields = [{name: 'raw data'}]
+    fields = [{name: '_sentence', label: 'raw data'},
+              {name: '_receivers', label: 'receiver callsigns'}]
     for sentence in payloads[selected_payload]['sentences']
         for field in sentence['fields']
             if field not in fields
-                fields.push {name: field['name']}
+                fields.push {name: field['name'], label: field['name']}
     $('#toggle-select-all').prop 'checked', false
     $('#select-data').html $('#data-checkbox-template').render fields
     select_data()
@@ -110,8 +111,6 @@ select_data = ->
         querypart = "?include_docs=true&startkey=#{key}]&endkey=#{key},[]]"
     fields = $('.select-data-checkbox:checked').map ->
         val = $(this).attr 'value'
-        if val == "raw data"
-            val = "_sentence"
         return val
     .get().join(",")
     querypart += "&fields=#{fields}"
