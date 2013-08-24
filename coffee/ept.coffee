@@ -116,6 +116,7 @@ select_data = ->
     querypart += "&fields=#{fields}"
     $('#export-csv').attr('href', base_url + "csv" + viewpart + querypart)
     $('#export-json').attr('href', base_url + "json" + viewpart + querypart)
+    $('#export-kml').attr('href', base_url + "kml" + viewpart + querypart)
     if fields != ""
         $('.hide-without-data').show()
     else
