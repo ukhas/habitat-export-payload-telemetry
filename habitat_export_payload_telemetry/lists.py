@@ -45,12 +45,8 @@ def csv_list(head, req, rows):
         yield buf.getvalue()
 
 
-@version(1)
+@version(2)
 def kml_list(head, req, rows):
-    with open("/tmp/ept-kml-dump", "w") as f:
-        f.write(json.dumps(head))
-        f.write(json.dumps(req))
-
     yield """<?xml version=1.0" encoding="UTF-8"?>
     <kml xmlns="http://earth.google.com/kml/2.0">
     <Document>
@@ -77,7 +73,7 @@ def kml_list(head, req, rows):
             yield "{longitude},{latitude},{altitude}\r\n".format(**data)
     launch_desc = ", ".join("{0}: {1}".format(k, v) for k, v in launch.items())
     burst_desc = ", ".join("{0}: {1}".format(k, v) for k, v in launch.items())
-    landg_desc = ", ".join("{0}: {1}".format(k, v) for k, v in land.items())
+    land_desc = ", ".join("{0}: {1}".format(k, v) for k, v in land.items())
     launch_coords = "{longitude},{latitude},{altitude}\r\n".format(**launch)
     burst_coords = "{longitude},{latitude},{altitude}\r\n".format(**burst)
     land_coords = "{longitude},{latitude},{altitude}\r\n".format(**land)
