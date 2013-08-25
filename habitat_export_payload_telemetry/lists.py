@@ -45,14 +45,20 @@ def csv_list(head, req, rows):
         yield buf.getvalue()
 
 
-@version(4)
+@version(5)
 def kml_list(head, req, rows):
     yield """<?xml version="1.0" encoding="UTF-8"?>
     <kml xmlns="http://earth.google.com/kml/2.0">
     <Document>
+        <Style id="ept">
+            <PolyStyle>
+                <color>33ffffff</color>
+            </PolyStyle>
+        </Style>
         <Folder>
             <Placemark>
                 <name>Track Segment</name>
+                <styleUrl>#ept</styleUrl>
                 <LineString>
                     <extrude>1</extrude>
                     <tessellate>1</tessellate>
