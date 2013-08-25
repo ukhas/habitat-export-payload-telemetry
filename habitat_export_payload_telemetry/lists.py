@@ -45,14 +45,12 @@ def csv_list(head, req, rows):
         yield buf.getvalue()
 
 
-@version(3)
+@version(4)
 def kml_list(head, req, rows):
     yield """<?xml version="1.0" encoding="UTF-8"?>
     <kml xmlns="http://earth.google.com/kml/2.0">
     <Document>
-        <name>Habitat Data Export</name>
         <Folder>
-            <name>Flight Path</name>
             <Placemark>
                 <name>Track Segment</name>
                 <LineString>
@@ -61,9 +59,11 @@ def kml_list(head, req, rows):
                     <altitudeMode>absolute</altitudeMode>
                     <coordinates>
     """
-    launch = burst = land = None
+    launch = burst = land = name = None
     for row in rows:
         data = row['doc']['data']
+        if not name:
+            name = data['payload'] if 'payload' in data else "Unknown"
         if "latitude" in data and "longitude" in data and "altitude" in data:
             if not launch:
                 launch = burst = data
@@ -81,7 +81,9 @@ def kml_list(head, req, rows):
                     </coordinates>
                 </LineString>
             </Placemark>
+            <name>Flight Path</name>
         </Folder>
+        <name>{name} Data Export</name>
         <Folder>
             <name>Launch, Burst and Landing Points</name>
             <Placemark>
