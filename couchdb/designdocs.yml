@@ -2,3 +2,4 @@ ept:
     lists:
         json: habitat_export_payload_telemetry.lists.json_list
         csv: habitat_export_payload_telemetry.lists.csv_list
+        kml: habitat_export_payload_telemetry.lists.kml_list
