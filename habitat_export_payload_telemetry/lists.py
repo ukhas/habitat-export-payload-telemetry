@@ -45,9 +45,9 @@ def csv_list(head, req, rows):
         yield buf.getvalue()
 
 
-@version(2)
+@version(3)
 def kml_list(head, req, rows):
-    yield """<?xml version=1.0" encoding="UTF-8"?>
+    yield """<?xml version="1.0" encoding="UTF-8"?>
     <kml xmlns="http://earth.google.com/kml/2.0">
     <Document>
         <name>Habitat Data Export</name>
