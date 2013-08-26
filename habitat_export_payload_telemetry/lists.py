@@ -78,7 +78,7 @@ def kml_list(head, req, rows):
             land = data
             yield "{longitude},{latitude},{altitude}\r\n".format(**data)
     launch_desc = ", ".join("{0}: {1}".format(k, v) for k, v in launch.items())
-    burst_desc = ", ".join("{0}: {1}".format(k, v) for k, v in launch.items())
+    burst_desc = ", ".join("{0}: {1}".format(k, v) for k, v in burst.items())
     land_desc = ", ".join("{0}: {1}".format(k, v) for k, v in land.items())
     launch_coords = "{longitude},{latitude},{altitude}\r\n".format(**launch)
     burst_coords = "{longitude},{latitude},{altitude}\r\n".format(**burst)
